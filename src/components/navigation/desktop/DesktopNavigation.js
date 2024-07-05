@@ -9,7 +9,6 @@ import { UserDropdown } from "./UserDropdown";
 import { DevActionsDropdown } from "./DevActionsDropdown";
 import { NotificationWidget } from "../NotificationWidget";
 import { StarButton } from "../StarButton";
-import logo from "../logo.svg";
 
 const StyledNavigation = styled.div`
   position: sticky;
@@ -17,7 +16,7 @@ const StyledNavigation = styled.div`
   left: 0;
   right: 0;
   width: 100%;
-  background-color: var(--slate-dark-1);
+  background-color: var(--slate-dark-12);
   z-index: 1000;
   padding: 12px 0;
 
@@ -74,7 +73,6 @@ export function DesktopNavigation(props) {
           }}
         >
           <Logotype />
-          {/* <img src={logo} alt="logo" /> */}
         </Link>
         <div className="navigation-section">
           <NavigationButton route="/">Home</NavigationButton>

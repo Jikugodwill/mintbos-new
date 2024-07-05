@@ -3,10 +3,13 @@ import React from "react";
 export function Logotype({ color = "white" }) {
   return (
     <svg
-      id="Layer_2"
+      id="logo"
       data-name="Layer 2"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 628.71 182.74"
+      className="logotype"
+      width="155"
+      fill="none"
     >
       <g id="Layer_1-2" data-name="Layer 1">
         <g>
