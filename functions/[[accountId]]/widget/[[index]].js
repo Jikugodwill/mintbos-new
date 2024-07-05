@@ -76,10 +76,10 @@ class NoscriptDescriptionInjector {
 }
 
 function defaultData() {
-  const image = "https://near.social/assets/logo.png";
-  const title = "Near Social";
+  const image = "https://minbos.vercel.app/assets/logo.png";
+  const title = "MinBOS";
   const description =
-    "Decentralized Customizable Social Network on NEAR Protocol";
+    "Mintbase.xyz on Near BOS";
   return {
     image,
     title,
