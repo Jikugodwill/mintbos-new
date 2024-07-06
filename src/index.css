@@ -1,18 +1,44 @@
+
 :root {
-  --slate-dark-1: #151718;
-  --slate-dark-5: #2b2f31;
-  --slate-dark-6: #313538;
-  --slate-dark-8: #4c5155;
-  --slate-dark-9: #697177;
-  --slate-dark-11: #9ba1a6;
-  --slate-dark-12: #ecedee;
-  --blue-light-9: #0091ff;
+  /* Brand Colors */
+  --mb-blackblue: #070C2B;
+  --mb-red: #FF2424;
+  --mb-red-35: #3A1C2A;
+  --mb-red-15: #FFDEDE;
 
-  --font-weight-medium: 500;
-  --font-weight-bold: 600;
+  /* Neutral Colors */
+  --gray-900: #101223;
+  --gray-850: #1E2030;
+  --gray-800: #282A3A;
+  --gray-700: #404252;
+  --gray-600: #5B5D6B;
+  --gray-500: #777986;
+  --gray-400: #9496A1;
+  --gray-300: #B3B5BD;
+  --gray-200: #D2D4DA;
+  --gray-150: #E8EAF0;
+  --gray-100: #F3F4F8;
+  --gray-50: #F9F9F9;
 
-  /* For web3 onboard */
-  --account-center-z-index: 999;
-  --account-center-position-top: 64px;
-  --account-center-position-right: -10px;
+  /* Action Colors */
+  --blue-300: #4F58A3;
+  --blue-300-35: #C2C5DD;
+  --blue-300-15: #EBEDFB;
+  --blue-100: #C5D0FF;
+  --blue-100-35: #3F4254;
+  --blue-100-15: #2B2E42;
+
+  /* Additional Colors */
+  --purple-300: #8C4FE5;
+  --purple-100: #E087FF;
+  --orange-300: #FF6C3B;
+  --orange-100: #FF9470;
+
+  /* State Colors */
+  --success-300: #0A7D6C;
+  --success-100: #9FED8F;
+  --warning-300: #F2D413;
+  --warning-100: #FFE855;
+  --error-300: #C74C4C;
+  --error-100: #ED5A5A;
 }
