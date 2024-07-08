@@ -14,20 +14,20 @@ import MobileQRModal from "../MobileQRModal";
 const StyledDropdown = styled.div`
   button,
   a {
-    font-weight: var(--font-weight-medium);
+    font-weight: 500;
   }
   .dropdown-toggle {
     display: flex;
     align-items: center;
     text-align: left;
-    background-color: var(--slate-dark-5);
+    background-color: var(--gray-500);
     border-radius: 50px;
     outline: none;
     border: 0;
 
     &:after {
       margin: 0 15px;
-      border-top-color: var(--slate-dark-11);
+      border-top-color: var(--gray-800);
     }
 
     img {
@@ -46,55 +46,96 @@ const StyledDropdown = styled.div`
       }
 
       .profile-name {
-        color: var(--slate-dark-12);
+        color: var(--gray-900);
       }
       .profile-username {
-        color: var(--slate-dark-11);
+        color: var(--gray-800);
       }
     }
   }
 
   ul {
-    background-color: var(--slate-dark-5);
+    background-color: var(--mb-white);
     width: 100%;
+    /* display: flex;
+    flex-flow: column nowrap;
+    gap: 0.5rem; */
 
     li {
       padding: 0 6px;
     }
+  }
+  .tab {
+    text-decoration: none;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    /* justify-content: flex-end; */
+    gap: 0.2rem;
+    border-radius: 0.25rem; /* Assuming default border radius */
+    color: ${({ isDarkModeOn }) =>
+      isDarkModeOn ? "#fff" : "#000"}; /* Ternary for text color */
+    padding: 8px 12px; /* Assuming Tailwind CSS default spacing unit */
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Assuming Tailwind CSS default timing function and duration */
+    white-space: nowrap;
+    cursor: pointer;
+    width: fit-content;
 
-    button,
-    a {
-      color: var(--slate-dark-11);
-      display: flex;
-      align-items: center;
-      border-radius: 8px;
-      padding: 12px;
-
-      :hover,
-      :focus {
-        text-decoration: none;
-        background-color: var(--slate-dark-1);
-        color: white;
-
-        svg {
-          path {
-            stroke: white;
-          }
-        }
+    svg {
+      margin-right: 7px;
+      min-width: 24px;
+      path {
+        stroke: ${({ isDarkModeOn }) => (isDarkModeOn ? "#fff" : "#000")};
       }
+    }
 
+    &:focus {
+      color: ${({ isDarkModeOn }) => (isDarkModeOn ? "#C5D0FF" : "#4F58A3")};
+      outline: 2px solid transparent; /* Assuming Tailwind CSS default focus outline */
+      outline-offset: 2px; /* Assuming Tailwind CSS default focus outline offset */
+      box-shadow: 0 0 0 2px
+        ${({ isDarkModeOn }) =>
+          isDarkModeOn
+            ? "rgba(59, 130, 246, 0.5)"
+            : "rgba(66, 153, 225, 0.5)"}; /* Ternary for box-shadow */
+      background-color: ${({ isDarkModeOn }) =>
+        isDarkModeOn
+          ? "rgba(59, 130, 246, 0.35)"
+          : "rgba(66, 153, 225, 0.15)"}; /* Ternary for background-color */
       svg {
-        margin-right: 7px;
-        min-width: 24px;
         path {
-          stroke: var(--slate-dark-9);
+          stroke: ${({ isDarkModeOn }) =>
+            isDarkModeOn ? "#C5D0FF" : "#4F58A3"};
         }
       }
+    }
+
+    &:hover {
+      color: ${({ isDarkModeOn }) => (isDarkModeOn ? "#C5D0FF" : "#4F58A3")};
+      background-color: ${({ isDarkModeOn }) =>
+        isDarkModeOn
+          ? "rgba(59, 130, 246, 0.15)"
+          : "rgba(66, 153, 225, 0.15)"}; /* Ternary for background-color */
+      svg {
+        path {
+          stroke: ${({ isDarkModeOn }) =>
+            isDarkModeOn ? "#C5D0FF" : "#4F58A3"};
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      padding: 12px;
+      font-size: 12px;
+      line-height: 14px;
     }
   }
 `;
 
-export function UserDropdown(props) {
+export function UserDropdown({ isDarkModeOn, ...props }) {
   const near = useNear();
   const account = useAccount();
 
@@ -107,7 +148,7 @@ export function UserDropdown(props) {
 
   return (
     <>
-      <StyledDropdown className="dropdown">
+      <StyledDropdown className="dropdown" isDarkModeOn={isDarkModeOn}>
         <button
           className="dropdown-toggle"
           type="button"
@@ -123,14 +164,6 @@ export function UserDropdown(props) {
               style: { width: "40px", height: "40px" },
             }}
           />
-          <div className="profile-info">
-            {props.widgets.profileName && (
-              <div className="profile-name">
-                <Widget src={props.widgets.profileName} />
-              </div>
-            )}
-            <div className="profile-username">{account.accountId}</div>
-          </div>
         </button>
         <ul
           className="dropdown-menu"
@@ -138,8 +171,20 @@ export function UserDropdown(props) {
           style={{ minWidth: "fit-content" }}
         >
           <li>
+            {/* <NavLink> */}
+              <div className="profile-info">
+                {/* {props.widgets.profileName && (
+                  <div className="profile-name">
+                    <Widget src={props.widgets.profileName} />
+                  </div>
+                )} */}
+                <div className="profile-username">{account.accountId}</div>
+              </div>
+            {/* </NavLink> */}
+          </li>
+          <li>
             <NavLink
-              className="dropdown-item"
+              className="dropdown-item tab"
               type="button"
               to={`/${props.widgets.profilePage}?accountId=${account.accountId}`}
             >
@@ -149,7 +194,7 @@ export function UserDropdown(props) {
           </li>
           <li>
             <button
-              className="dropdown-item"
+              className="dropdown-item tab"
               type="button"
               onClick={() => withdrawStorage()}
             >
@@ -160,7 +205,7 @@ export function UserDropdown(props) {
           {account.pretendAccountId ? (
             <li key="pretend">
               <button
-                className="dropdown-item"
+                className="dropdown-item tab"
                 type="button"
                 disabled={!account.startPretending}
                 onClick={() => account.startPretending(undefined)}
@@ -173,7 +218,7 @@ export function UserDropdown(props) {
             <>
               <li key="stop-pretend">
                 <button
-                  className="dropdown-item"
+                  className="dropdown-item tab"
                   type="button"
                   onClick={() => setShowPretendModal(true)}
                 >
@@ -183,7 +228,7 @@ export function UserDropdown(props) {
               </li>
               <li>
                 <button
-                  className="dropdown-item"
+                  className="dropdown-item tab"
                   type="button"
                   onClick={() => setShowMobileQR(true)}
                 >
@@ -195,7 +240,7 @@ export function UserDropdown(props) {
           )}
           <li>
             <button
-              className="dropdown-item"
+              className="dropdown-item tab"
               type="button"
               onClick={() => props.logOut()}
             >
