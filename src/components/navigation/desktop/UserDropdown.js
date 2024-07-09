@@ -10,6 +10,7 @@ import { Pretend } from "../../icons/Pretend";
 import { StopPretending } from "../../icons/StopPretending";
 import { QR } from "../../icons/QR";
 import MobileQRModal from "../MobileQRModal";
+import Attach from "../../icons/Attach";
 
 const StyledDropdown = styled.div`
   button,
@@ -20,14 +21,13 @@ const StyledDropdown = styled.div`
     display: flex;
     align-items: center;
     text-align: left;
-    background-color: var(--gray-500);
+    background-color: var(--mb-white);
     border-radius: 50px;
     outline: none;
     border: 0;
 
     &:after {
-      margin: 0 15px;
-      border-top-color: var(--gray-800);
+      color: #fff;
     }
 
     img {
@@ -48,24 +48,29 @@ const StyledDropdown = styled.div`
       .profile-name {
         color: var(--gray-900);
       }
-      .profile-username {
-        color: var(--gray-800);
-      }
     }
   }
 
   ul {
     background-color: var(--mb-white);
     width: 100%;
-    /* display: flex;
-    flex-flow: column nowrap;
-    gap: 0.5rem; */
+    border-radius: 0px;
+    border: 0;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 16px 12px;
 
     li {
       padding: 0 6px;
     }
   }
-  .tab {
+  .dropdown-menu.show {
+    margin: 10px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .tab,
+  .ctab {
     text-decoration: none;
     text-align: left;
     display: flex;
@@ -133,6 +138,12 @@ const StyledDropdown = styled.div`
       line-height: 14px;
     }
   }
+  .ctab {
+    background-color: var(--gray-100);
+    color: var(--gray-800);
+    width: 100%;
+    font-size: 12px;
+  }
 `;
 
 export function UserDropdown({ isDarkModeOn, ...props }) {
@@ -164,6 +175,11 @@ export function UserDropdown({ isDarkModeOn, ...props }) {
               style: { width: "40px", height: "40px" },
             }}
           />
+          {/* {props.widgets.profileName && (
+                  <div className="profile-name">
+                    <Widget src={props.widgets.profileName} />
+                  </div>
+                )} */}
         </button>
         <ul
           className="dropdown-menu"
@@ -171,25 +187,23 @@ export function UserDropdown({ isDarkModeOn, ...props }) {
           style={{ minWidth: "fit-content" }}
         >
           <li>
-            {/* <NavLink> */}
-              <div className="profile-info">
-                {/* {props.widgets.profileName && (
-                  <div className="profile-name">
-                    <Widget src={props.widgets.profileName} />
-                  </div>
-                )} */}
-                <div className="profile-username">{account.accountId}</div>
-              </div>
-            {/* </NavLink> */}
+            <NavLink
+              type="button"
+              className="dropdown-item ctab"
+              to={`/${props.widgets.profileSettingsPage}?page=human&tab=user-settings&accountId=${account.accountId}`}
+            >
+              <Attach />
+              {account.accountId}
+            </NavLink>
           </li>
           <li>
             <NavLink
               className="dropdown-item tab"
               type="button"
-              to={`/${props.widgets.profilePage}?accountId=${account.accountId}`}
+              to={`/${props.widgets.profilePage}?page=human&tab=owned&accountId=${account.accountId}`}
             >
               <User />
-              My Profile
+              View Profile
             </NavLink>
           </li>
           <li>
