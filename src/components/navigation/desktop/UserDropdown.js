@@ -11,6 +11,7 @@ import { StopPretending } from "../../icons/StopPretending";
 import { QR } from "../../icons/QR";
 import MobileQRModal from "../MobileQRModal";
 import Attach from "../../icons/Attach";
+import ActAsDao from "../ActasDAO/ActasDAO";
 
 const StyledDropdown = styled.div`
   button,
@@ -154,6 +155,8 @@ export function UserDropdown({ isDarkModeOn, ...props }) {
     await near.contract.storage_withdraw({}, undefined, "1");
   }, [near]);
 
+  console.log("here", near);
+
   const [showPretendModal, setShowPretendModal] = React.useState(false);
   const [showMobileQR, setShowMobileQR] = React.useState(false);
 
@@ -195,6 +198,9 @@ export function UserDropdown({ isDarkModeOn, ...props }) {
               <Attach />
               {account.accountId}
             </NavLink>
+          </li>
+          <li>
+            <ActAsDao accountId={account.accountId} />
           </li>
           <li>
             <NavLink

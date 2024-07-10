@@ -19,6 +19,7 @@
     "@web3-onboard/ledger": "^2.4.6",
     "@web3-onboard/react": "^2.8.7",
     "@web3-onboard/walletconnect": "^2.3.9",
+    "@wpdas/naxios": "^2.1.0",
     "big.js": "^6.1.1",
     "bn.js": "^5.1.1",
     "bootstrap": "^5.3.1",
