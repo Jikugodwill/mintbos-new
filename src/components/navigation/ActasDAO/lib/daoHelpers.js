@@ -1,46 +1,47 @@
 import { naxiosInstance } from "./naxiosInstance";
 
-export function doesUserHaveDaoFunctionCallProposalPermissions(
-  accountId,
-  policy
-) {
-  const userRoles = policy.roles.filter((role) => {
-    console.log("policy", policy);
-
-    if (role.kind === "Everyone") return true;
-    return role.kind.Group && role.kind.Group.includes(accountId);
-  });
-  const kind = "call";
-  const action = "AddProposal";
-  // Check if the user is allowed to perform the action
-  const allowed = userRoles.some(({ permissions }) => {
-    return (
-      permissions.includes(`${kind}:${action}`) ||
-      permissions.includes(`${kind}:*`) ||
-      permissions.includes(`*:${action}`) ||
-      permissions.includes("*:*")
-    );
-  });
-  return allowed;
-}
-
 export const checkIfDaoAddress = (addresss) => {
   return addresss.endsWith(
     "mainnet" ? "sputnik-dao.near" : "sputnik-dao.testnet" // TODO: not sure about this one
   );
 };
 
-export const validateUserInDao = async (daoAddress, accountId) => {
+export const validateUserInDao = async (daoAddress) => {
+  try {
+    // Check if daoAddress is provided and valid
+    if (!daoAddress || typeof daoAddress !== 'string') {
+      return "Please enter a valid DAO address.";
+    }
 
-  const daoContractApi = naxiosInstance.contractApi({
-    contractId: daoAddress,
-  });
+    const daoContractApi = naxiosInstance.contractApi({
+      contractId: daoAddress,
+    });
 
-  const policy = await daoContractApi.view("get_policy");
-  console.log("policy", policy);
-  if (!daoContractApi) return "Please enter a valid DAO address.";
+    // Check if daoContractApi was created successfully
+    if (!daoContractApi) {
+      return "Failed to create DAO contract API. Please check the DAO address.";
+    }
 
-  return "";
+    try {
+      const policy = await daoContractApi.view("get_policy");
+      console.log("policy", policy);
+
+      // Check if policy exists
+      if (!policy) {
+        return "Unable to retrieve DAO policy. Please check if the DAO address is correct.";
+      }
+
+      // If we've reached this point, validation was successful
+      return "";
+    } catch (viewError) {
+      console.error("Error viewing DAO policy:", viewError);
+      return "Error retrieving DAO policy. Please ensure the DAO address is correct and try again.";
+    }
+
+  } catch (error) {
+    console.error("Error in validateUserInDao:", error);
+    return "An unexpected error occurred. Please try again later.";
+  }
 };
 
 // export function updateList(list, item) {

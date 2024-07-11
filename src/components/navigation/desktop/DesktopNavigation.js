@@ -62,6 +62,8 @@ const StyledNavigation = styled.div`
   }
 `;
 
+const account = useAccount();
+
 export function DesktopNavigation(props) {
   return (
     <StyledNavigation>
@@ -82,6 +84,9 @@ export function DesktopNavigation(props) {
             Docs
             <ArrowUpRight />
           </NavigationButton>
+        </div>
+        <div>
+          <ActAsDao accountId={account.accountId} />
         </div>
         <div className="user-section">
           <StarButton {...props} />

@@ -200,7 +200,7 @@ export function UserDropdown({ isDarkModeOn, ...props }) {
             </NavLink>
           </li>
           <li>
-            <ActAsDao accountId={account.accountId} />
+            {/* <ActAsDao accountId={account.accountId} /> */}
           </li>
           <li>
             <NavLink

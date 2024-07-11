@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { _address } from "./lib/_address";
 import { validateUserInDao } from "./lib/daoHelpers";
 
-const LOCALSTORAGE_KEY = "actAsDao_data";
+const LOCALSTORAGE_KEY = " actAsDao_data";
 
 const getLocalStorageData = () => {
   try {
@@ -24,7 +24,7 @@ const setLocalStorageData = (data) => {
   }
 };
 
-const ActAsDao = ({ accountId }) => {
+const ActAsDao = () => {
   const [actAsDao, setActAsDao] = useState(() => {
     const savedData = getLocalStorageData();
     return (
@@ -38,7 +38,7 @@ const ActAsDao = ({ accountId }) => {
   const [inputActive, setInputActive] = useState(false);
   const [daoAddress, setDaoAddress] = useState("");
   const [daoError, setDaoError] = useState("");
-  const [addresses, setAddresses] = useState([]);
+  const [address, setAddress] = useState([]);
 
   useEffect(() => {
     setLocalStorageData(actAsDao);
@@ -51,12 +51,12 @@ const ActAsDao = ({ accountId }) => {
     }
   };
 
-  const markDaoAsDefault = (address) => {
-    // Implement marking DAO as default if needed
-  };
+  // const markDaoAsDefault = (address) => {
+  // Implement marking DAO as default if needed
+  // };
 
-  const addOrRemoveDaoAddress = (newAddresses) => {
-    setAddresses(newAddresses);
+  const addOrRemoveDaoAddress = (newAddress) => {
+    setAddress(newAddress);
   };
 
   const handleAddDao = async (e) => {
@@ -66,35 +66,26 @@ const ActAsDao = ({ accountId }) => {
       return;
     }
 
-    const check = await validateUserInDao(daoAddress, accountId); // assuming accountId is defined
+    const check = await validateUserInDao(daoAddress);
     if (check) {
       setDaoError(check);
       return;
     }
 
-    if (addresses.includes(daoAddress)) {
-      setDaoError("DAO address already exists.");
-      return;
-    }
+    // if (addresses.includes(daoAddress)) {
+    //   setDaoError("DAO address already exists.");
+    //   return;
+    // }
 
-    if (addresses.length === 0) {
-      markDaoAsDefault(daoAddress);
-    }
+    // if (addresses.length === 0) {
+    //   markDaoAsDefault(daoAddress);
+    // }
 
-    addOrRemoveDaoAddress([...addresses, daoAddress]);
+    addOrRemoveDaoAddress(daoAddress);
     setDaoAddress("");
     setInputActive(false);
     setDaoError("");
   };
-
-  const setAddress = (newAddress) => {
-    setActAsDao((prev) => ({
-      ...prev,
-      address: newAddress,
-    }));
-    setInputActive(false);
-  };
-
   return (
     <div className="act-as-dao">
       <div className="header">
@@ -147,7 +138,7 @@ const ActAsDao = ({ accountId }) => {
                 type="text"
                 className="dao-input"
                 placeholder="Enter DAO address"
-                value={daoAddress}
+                value={actAsDao}
                 onChange={(e) => setDaoAddress(e.target.value)}
               />
               {daoError && <p className="error">{daoError}</p>}
