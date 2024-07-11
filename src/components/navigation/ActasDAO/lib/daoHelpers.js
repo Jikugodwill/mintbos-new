@@ -43,15 +43,3 @@ export const validateUserInDao = async (daoAddress) => {
     return "An unexpected error occurred. Please try again later.";
   }
 };
-
-// export function updateList(list, item) {
-//   const index = list.indexOf(item);
-//   if (index === -1) {
-//     // Item does not exist, add it
-//     list.push(item);
-//   } else {
-//     // Item exists, remove it
-//     list.splice(index, 1);
-//   }
-//   return list;
-// }

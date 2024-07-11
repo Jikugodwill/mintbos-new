@@ -9,6 +9,8 @@ import { UserDropdown } from "./UserDropdown";
 import { DevActionsDropdown } from "./DevActionsDropdown";
 import { NotificationWidget } from "../NotificationWidget";
 import { StarButton } from "../StarButton";
+import { useNear, useAccount } from "near-social-vm";
+import ActAsDao from "../ActasDAO/ActasDAO";
 
 const StyledNavigation = styled.div`
   position: sticky;
@@ -62,9 +64,8 @@ const StyledNavigation = styled.div`
   }
 `;
 
-const account = useAccount();
-
 export function DesktopNavigation(props) {
+  const account = useAccount();
   return (
     <StyledNavigation>
       <div className="container">
@@ -85,11 +86,11 @@ export function DesktopNavigation(props) {
             <ArrowUpRight />
           </NavigationButton>
         </div>
-        <div>
-          <ActAsDao accountId={account.accountId} />
-        </div>
         <div className="user-section">
           <StarButton {...props} />
+          <div>
+            {account.accountId && <ActAsDao accountId={account.accountId} />}
+          </div>
           <DevActionsDropdown {...props} />
           {!props.signedIn && (
             <SignInButton onSignIn={() => props.requestSignIn()} />

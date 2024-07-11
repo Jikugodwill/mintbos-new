@@ -2,18 +2,16 @@ import React, { useState, useEffect } from "react";
 import { _address } from "./lib/_address";
 import { validateUserInDao } from "./lib/daoHelpers";
 
-const LOCALSTORAGE_KEY = " actAsDao_data";
+const LOCALSTORAGE_KEY = "actAsDao_data";
 
 const getLocalStorageData = () => {
   try {
     const savedData = localStorage.getItem(LOCALSTORAGE_KEY);
-    if (savedData) {
-      return JSON.parse(savedData);
-    }
+    return savedData ? JSON.parse(savedData) : null;
   } catch (error) {
     console.error("Error reading from localStorage:", error);
+    return null;
   }
-  return null;
 };
 
 const setLocalStorageData = (data) => {
@@ -26,19 +24,12 @@ const setLocalStorageData = (data) => {
 
 const ActAsDao = () => {
   const [actAsDao, setActAsDao] = useState(() => {
-    const savedData = getLocalStorageData();
-    return (
-      savedData || {
-        address: "",
-        toggle: false,
-      }
-    );
+    return getLocalStorageData() || { address: "", toggle: false };
   });
 
   const [inputActive, setInputActive] = useState(false);
   const [daoAddress, setDaoAddress] = useState("");
   const [daoError, setDaoError] = useState("");
-  const [address, setAddress] = useState([]);
 
   useEffect(() => {
     setLocalStorageData(actAsDao);
@@ -49,14 +40,6 @@ const ActAsDao = () => {
     if (newToggle && !actAsDao.address) {
       setInputActive(true);
     }
-  };
-
-  // const markDaoAsDefault = (address) => {
-  // Implement marking DAO as default if needed
-  // };
-
-  const addOrRemoveDaoAddress = (newAddress) => {
-    setAddress(newAddress);
   };
 
   const handleAddDao = async (e) => {
@@ -72,20 +55,12 @@ const ActAsDao = () => {
       return;
     }
 
-    // if (addresses.includes(daoAddress)) {
-    //   setDaoError("DAO address already exists.");
-    //   return;
-    // }
-
-    // if (addresses.length === 0) {
-    //   markDaoAsDefault(daoAddress);
-    // }
-
-    addOrRemoveDaoAddress(daoAddress);
+    setActAsDao((prev) => ({ ...prev, address: daoAddress }));
     setDaoAddress("");
     setInputActive(false);
     setDaoError("");
   };
+
   return (
     <div className="act-as-dao">
       <div className="header">
@@ -138,7 +113,7 @@ const ActAsDao = () => {
                 type="text"
                 className="dao-input"
                 placeholder="Enter DAO address"
-                value={actAsDao}
+                value={daoAddress}
                 onChange={(e) => setDaoAddress(e.target.value)}
               />
               {daoError && <p className="error">{daoError}</p>}
