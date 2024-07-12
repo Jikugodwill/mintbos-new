@@ -18,7 +18,8 @@ const StyledNavigation = styled.div`
   left: 0;
   right: 0;
   width: 100%;
-  background-color: var(--mb-white);
+  /* background-color: var(--mb-white); */
+  background: transparent;
   color: var(--mb-blackblue);
   z-index: 1000;
   padding: 12px 0;
@@ -78,16 +79,16 @@ export function DesktopNavigation(props) {
         >
           <Logotype />
         </Link>
-        <div className="navigation-section">
+        {/* <div className="navigation-section">
           <NavigationButton route="/">Home</NavigationButton>
           <NavigationButton route="/edit">Editor</NavigationButton>
           <NavigationButton href={props.documentationHref}>
             Docs
             <ArrowUpRight />
           </NavigationButton>
-        </div>
+        </div> */}
         <div className="user-section">
-          <StarButton {...props} />
+          {/* <StarButton {...props} /> */}
           {/* <div>
             {account.accountId && <ActAsDao accountId={account.accountId} />}
           </div> */}
