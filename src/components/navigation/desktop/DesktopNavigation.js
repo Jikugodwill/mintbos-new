@@ -91,7 +91,7 @@ export function DesktopNavigation(props) {
           <div>
             {account.accountId && <ActAsDao accountId={account.accountId} />}
           </div>
-          <DevActionsDropdown {...props} />
+          {/* <DevActionsDropdown {...props} /> */}
           {!props.signedIn && (
             <SignInButton onSignIn={() => props.requestSignIn()} />
           )}

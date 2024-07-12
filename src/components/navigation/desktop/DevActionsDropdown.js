@@ -11,7 +11,7 @@ const StyledDropdown = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--slate-dark-5);
+    background-color: var(--gray-500);
     border-radius: 50px;
     outline: none;
     border: 0;
@@ -30,7 +30,7 @@ const StyledDropdown = styled.div`
       justify-content: space-evenly;
 
       div {
-        background-color: var(--slate-dark-11);
+        background-color: var(--gray-900);
         height: 2px;
         width: 100%;
         border-radius: 30px;
@@ -47,7 +47,7 @@ const StyledDropdown = styled.div`
   }
 
   ul {
-    background-color: var(--slate-dark-5);
+    background-color: var(--gray-500);
     width: 100%;
 
     li {
@@ -56,7 +56,7 @@ const StyledDropdown = styled.div`
 
     button,
     a {
-      color: var(--slate-dark-11);
+      color: var(--gray-900);
       display: flex;
       align-items: center;
       border-radius: 8px;
@@ -65,7 +65,7 @@ const StyledDropdown = styled.div`
       :hover,
       :focus {
         text-decoration: none;
-        background-color: var(--slate-dark-1);
+        background-color: var(--gray-700);
         color: white;
 
         svg {
@@ -78,7 +78,7 @@ const StyledDropdown = styled.div`
       svg {
         margin-right: 7px;
         path {
-          stroke: var(--slate-dark-9);
+          stroke: var(--gray-800);
         }
       }
     }
