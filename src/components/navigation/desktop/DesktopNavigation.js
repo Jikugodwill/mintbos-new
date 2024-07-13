@@ -70,7 +70,7 @@ export function DesktopNavigation(props) {
   return (
     <StyledNavigation>
       <div className="container">
-        <Link
+        {/* <Link
           to="/"
           className="logo-link"
           onClick={() => {
@@ -78,7 +78,7 @@ export function DesktopNavigation(props) {
           }}
         >
           <Logotype />
-        </Link>
+        </Link> */}
         {/* <div className="navigation-section">
           <NavigationButton route="/">Home</NavigationButton>
           <NavigationButton route="/edit">Editor</NavigationButton>
