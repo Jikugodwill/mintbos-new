@@ -87,7 +87,7 @@ export function DesktopNavigation(props) {
             <ArrowUpRight />
           </NavigationButton>
         </div> */}
-        <div className="user-section">
+        {/* <div className="user-section"> */}
           {/* <StarButton {...props} /> */}
           {/* <div>
             {account.accountId && <ActAsDao accountId={account.accountId} />}
@@ -104,7 +104,7 @@ export function DesktopNavigation(props) {
               <UserDropdown {...props} />
             </>
           )} */}
-        </div>
+        {/* </div> */}
       </div>
     </StyledNavigation>
   );
