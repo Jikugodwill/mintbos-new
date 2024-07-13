@@ -22,7 +22,7 @@ const StyledNavigation = styled.div`
   background: transparent;
   color: var(--mb-blackblue);
   z-index: 1000;
-  /* padding: 12px 0; */
+  padding: 12px 0;
 
   .user-section {
     margin-left: auto;
