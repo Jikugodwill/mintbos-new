@@ -47,6 +47,8 @@ export default function ViewPage(props) {
     }, 1);
   }, [src, query, setWidgetSrc, viewSourceWidget]);
 
+  const isGateway = true;
+
   return showMenu ? (
     <div className="container-xl">
       <div className="row">
@@ -57,11 +59,11 @@ export default function ViewPage(props) {
             paddingTop: "var(--body-top-padding)",
           }}
         >
-          <Widget key={src} src={src} props={widgetProps} />
+          <Widget key={src} src={src} props={{ ...widgetProps, isGateway }} />
         </div>
       </div>
     </div>
   ) : (
-    <Widget key={src} src={src} props={widgetProps} />
+    <Widget key={src} src={src} props={{ ...widgetProps, isGateway }} />
   );
 }
