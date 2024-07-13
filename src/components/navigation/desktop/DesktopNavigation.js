@@ -93,7 +93,7 @@ export function DesktopNavigation(props) {
             {account.accountId && <ActAsDao accountId={account.accountId} />}
           </div> */}
           {/* <DevActionsDropdown {...props} /> */}
-          {!props.signedIn && (
+          {/* {!props.signedIn && (
             <SignInButton onSignIn={() => props.requestSignIn()} />
           )}
           {props.signedIn && (
@@ -103,7 +103,7 @@ export function DesktopNavigation(props) {
               />
               <UserDropdown {...props} />
             </>
-          )}
+          )} */}
         </div>
       </div>
     </StyledNavigation>
