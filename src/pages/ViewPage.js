@@ -53,11 +53,19 @@ export default function ViewPage(props) {
     <div className="container-xl">
       <div className="row">
         <div className="position-relative">
-          <Widget key={src} src={src} props={{ ...widgetProps, isGateway }} />
+          <Widget
+            key={src}
+            src={src}
+            props={{ ...widgetProps, ...props, isGateway }}
+          />
         </div>
       </div>
     </div>
   ) : (
-    <Widget key={src} src={src} props={{ ...widgetProps, isGateway }} />
+    <Widget
+      key={src}
+      src={src}
+      props={{ ...widgetProps, ...props, isGateway }}
+    />
   );
 }
