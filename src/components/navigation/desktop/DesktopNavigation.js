@@ -87,13 +87,13 @@ export function DesktopNavigation(props) {
             <ArrowUpRight />
           </NavigationButton>
         </div> */}
-        <div className="user-section">
+        {/* <div className="user-section"> */}
           {/* <StarButton {...props} /> */}
           {/* <div>
             {account.accountId && <ActAsDao accountId={account.accountId} />}
           </div> */}
           {/* <DevActionsDropdown {...props} /> */}
-          {!props.signedIn && (
+          {/* {!props.signedIn && (
             <SignInButton onSignIn={() => props.requestSignIn()} />
           )}
           {props.signedIn && (
@@ -103,8 +103,8 @@ export function DesktopNavigation(props) {
               />
               <UserDropdown {...props} />
             </>
-          )}
-        </div>
+          )} */}
+        {/* </div> */}
       </div>
     </StyledNavigation>
   );
