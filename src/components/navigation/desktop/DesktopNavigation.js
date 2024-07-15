@@ -70,7 +70,7 @@ export function DesktopNavigation(props) {
   return (
     <StyledNavigation>
       <div className="container">
-        {/* <Link
+        <Link
           to="/"
           className="logo-link"
           onClick={() => {
@@ -78,22 +78,22 @@ export function DesktopNavigation(props) {
           }}
         >
           <Logotype />
-        </Link> */}
-        {/* <div className="navigation-section">
+        </Link>
+        <div className="navigation-section">
           <NavigationButton route="/">Home</NavigationButton>
           <NavigationButton route="/edit">Editor</NavigationButton>
           <NavigationButton href={props.documentationHref}>
             Docs
             <ArrowUpRight />
           </NavigationButton>
-        </div> */}
-        {/* <div className="user-section"> */}
-          {/* <StarButton {...props} /> */}
-          {/* <div>
+        </div>
+        <div className="user-section">
+          <StarButton {...props} />
+          <div>
             {account.accountId && <ActAsDao accountId={account.accountId} />}
-          </div> */}
-          {/* <DevActionsDropdown {...props} /> */}
-          {/* {!props.signedIn && (
+          </div>
+          <DevActionsDropdown {...props} />
+          {!props.signedIn && (
             <SignInButton onSignIn={() => props.requestSignIn()} />
           )}
           {props.signedIn && (
@@ -103,8 +103,8 @@ export function DesktopNavigation(props) {
               />
               <UserDropdown {...props} />
             </>
-          )} */}
-        {/* </div> */}
+          )}
+        </div>
       </div>
     </StyledNavigation>
   );
