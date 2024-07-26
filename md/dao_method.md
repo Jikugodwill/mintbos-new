@@ -13,7 +13,7 @@ Mintbase DAO (Decentralized Autonomous Organization) methods allow users to inte
 
 The `listAsADao` method allows a DAO to propose and execute the listing of NFTs on the Mintbase marketplace. This function requires several parameters including the DAO ID, contract address, token IDs, mainnet flag, price, list amount, and an optional fungible token (ft). Here is the implementation of the `listAsADao` method:- `contractAddress`: which is the address of the contract.
 
-```
+```js
 const listAsADao = (
   daoId,
   contractAddress,
@@ -103,7 +103,7 @@ In this example, the method first checks if the contract address and token IDs a
 
 The `deployStoreAsADao` method allows a DAO to propose and execute the creation of a new store on the Mintbase platform. This function requires several parameters including the DAO ID, store name, store symbol, reference, reference hash, network flag (isMainnet), and account ID. Here is the implementation of the `deployStoreAsADao` method:
 
-```
+```js
 const deployStoreAsADao = ({
   daoId,
   storeName,
@@ -169,7 +169,6 @@ const deployStoreAsADao = ({
     console.log(error);
   }
 };
-
 ```
 
 In this example, the method first checks if the user is signed in and if the store name and symbol are provided. It then constructs the necessary parameters for creating the store, including metadata such as the store name, symbol, and optional references. The method prepares a proposal for the DAO to create the store and submits it using the `Near.call` function. If the proposal is approved by the DAO members, the store will be created on the Mintbase platform.

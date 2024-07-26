@@ -8,13 +8,12 @@ This page provides a user interface for searching and displaying Decentralized A
 
 The `DAOCard` component is responsible for rendering individual DAO details. It displays information such as the DAO's name, the number of owned NFTs, the number of members, and the number of proposals.
 
-```
+```js
 const { DAOCard } = VM.require(
   "${config_account}/widget/Mintbase.App.DAOs.DAOCard"
 ) || {
   DAOCard: () => <></>,
 };
-
 ```
 
 ### MintDAOs Component
