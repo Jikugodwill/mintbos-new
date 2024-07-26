@@ -1,6 +1,6 @@
-## MintBos Resources and Documentations
+## MintBOS Resources and Documentations
 
-#### Must know info for builders on Mintbos
+##### Must know info for builders on Mintbos
 
 ### Things to read:
 
