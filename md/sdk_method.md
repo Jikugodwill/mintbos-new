@@ -13,7 +13,7 @@ This is just an example to
 
 To use the `transferStoreOwnership` function, you need to import it from the SDK. Here’s how you can do it:
 
-```
+```js
 const { transferStoreOwnership } = VM.require(
   "${config_account}/widget/Mintbase.utils.sdk"
 );
@@ -23,7 +23,7 @@ const { transferStoreOwnership } = VM.require(
 
 Once the function is imported, you can call it by passing the required parameters. In this example, the function is called within the `onSign` method, which is triggered by a user action, such as clicking a button. you could also add validations when calling the method and error checks
 
-```
+```js
 const onSign = () => {
   transferStoreOwnership(contractId, transferAccountName);
 };
@@ -33,7 +33,7 @@ const onSign = () => {
 
 Below is the base implementation of the `transferStoreOwnership` function. This function takes the current contract name and the new owner's account name as parameters and performs the ownership transfer.
 
-```
+```js
 function transferStoreOwnership(contractName, newOwner) {
   const deposit = 1;
   try {

@@ -54,7 +54,7 @@
 
 Install [create-bos-app](https://github.com/archetype-org/create-bos-app)
 
-```
+```cmd
 
 pnpm add -g @archetype-org/create-bos-app
 
@@ -62,7 +62,7 @@ pnpm add -g @archetype-org/create-bos-app
 
 After installing, run the CLI to start your app, switch to the app directory, and start up the dev environment
 
-```
+```cmd
 
 create-bos-app
 
